@@ -1,7 +1,8 @@
 import './App.css';
 import {Todolist} from "./todolist/Todolist";
-import {useState} from "react";
+import {FC, useState} from "react";
 import {v1} from "uuid";
+import {CreateItemForm} from "./CreateItemForm";
 
 export type TaskType = {
 	id: string
@@ -94,8 +95,25 @@ function App() {
 		setTasks(newTasks)
 	}
 
+	const addList = (title: string) => {
+		debugger
+		let todoListIdX = v1()
+
+		const newList: TodoListType = {
+			id: todoListIdX,
+			title: title,
+			filter: 'all'
+		}
+		setTodoLists([newList, ...todoLists])
+
+		let newTasks: TasksStateType = {...tasks, [todoListIdX]: []}
+
+		setTasks(newTasks)
+	}
+
 	return (
 		<div className="App">
+			<CreateItemForm addItem={addList} />
 			{todoLists.map(tl => {
 				let tasksForTodolist = tasks[tl.id]
 				if (tl.filter === 'active') {

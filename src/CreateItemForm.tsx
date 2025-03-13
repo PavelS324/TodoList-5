@@ -7,33 +7,33 @@ type TypeCreateItemForm = {
     // changeTaskTitleHandler: (event: ChangeEvent<HTMLInputElement>) => void
     // addTaskOnKeyUpHandler: (event: KeyboardEvent<HTMLInputElement>) => void
     // addTaskHandler: (todoListId: string) => void
-    todoListId: string
-    addTask: (todoListId: string, title: string) => void
+    // todoListId: string
+    addItem: (title: string) => void
 }
 export const CreateItemForm = (props: TypeCreateItemForm) => {
     // const {error, taskTitle, changeTaskTitleHandler, addTaskOnKeyUpHandler, addTaskHandler, todoListId} = props
-    const {todoListId, addTask} = props
+    const {addItem} = props
 
-    const [taskTitle, setTaskTitle] = useState('')
+    const [itemTitle, setItemTitle] = useState('')
     const [error, setError] = useState<string | null>(null)
 
-    const addTaskHandler = (todoListId: string) => {
-        if (taskTitle.trim() !== '') {
-            addTask(todoListId, taskTitle.trim())
-            setTaskTitle('')
+    const addItemHandler = () => {
+        if (itemTitle.trim() !== '') {
+            addItem(itemTitle.trim())
+            setItemTitle('')
         } else {
             setError('Title is required')
         }
     }
 
-    const changeTaskTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        setTaskTitle(event.currentTarget.value)
+    const changeItemTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setItemTitle(event.currentTarget.value)
     }
 
-    const addTaskOnKeyUpHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    const addItemOnKeyUpHandler = (event: KeyboardEvent<HTMLInputElement>) => {
         setError(null)
         if (event.key === 'Enter') {
-            addTaskHandler(todoListId)
+            addItemHandler()
         }
     }
 
@@ -41,11 +41,11 @@ export const CreateItemForm = (props: TypeCreateItemForm) => {
         <div>
             <input
                 className={error ? 'error' : ''}
-                value={taskTitle}
-                onChange={changeTaskTitleHandler}
-                onKeyUp={addTaskOnKeyUpHandler}
+                value={itemTitle}
+                onChange={changeItemTitleHandler}
+                onKeyUp={addItemOnKeyUpHandler}
             />
-            <Button title={'+'} onClick={() => {addTaskHandler(todoListId)}}/>
+            <Button title={'+'} onClick={() => {addItemHandler()}}/>
             {error && <div className={'error-message'}>{error}</div> }
         </div>
     )

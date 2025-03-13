@@ -49,6 +49,10 @@ export const Todolist = (props: PropsType) => {
 		removeListTasks(todoListId)
 	}
 
+	const addNewTask = (title: string) => {
+		addTask(todoListId, title)
+	}
+
 	return (
 		<div>
 			<div className={'todolist-title-container'}>
@@ -64,7 +68,7 @@ export const Todolist = (props: PropsType) => {
 				{/*/>*/}
 				{/*<Button title={'+'} onClick={() => {addTaskHandler(todoListId)}}/>*/}
 				{/*{error && <div className={'error-message'}>{error}</div> }*/}
-				<CreateItemForm todoListId={todoListId} addTask={() => addTask} />
+				<CreateItemForm addItem={addNewTask} />
 			</div>
 			{
 				tasks.length === 0
