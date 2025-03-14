@@ -2,16 +2,9 @@ import {Button} from "./Button";
 import {ChangeEvent, KeyboardEvent, useState} from "react";
 
 type TypeCreateItemForm = {
-    // error: string | null
-    // taskTitle: string
-    // changeTaskTitleHandler: (event: ChangeEvent<HTMLInputElement>) => void
-    // addTaskOnKeyUpHandler: (event: KeyboardEvent<HTMLInputElement>) => void
-    // addTaskHandler: (todoListId: string) => void
-    // todoListId: string
     addItem: (title: string) => void
 }
 export const CreateItemForm = (props: TypeCreateItemForm) => {
-    // const {error, taskTitle, changeTaskTitleHandler, addTaskOnKeyUpHandler, addTaskHandler, todoListId} = props
     const {addItem} = props
 
     const [itemTitle, setItemTitle] = useState('')
