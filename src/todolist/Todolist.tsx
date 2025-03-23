@@ -12,12 +12,13 @@ type PropsType = {
 	changeFilter: (filter: FilterValuesType, todoListId: string) => void
 	addTask: (todoListId: string, title: string) => void
 	changeTaskStatus: (todoListId: string, taskId: string, taskStatus: boolean) => void
+	changeTaskTitle: (todoListId: string, taskId: string, taskTitle: string) => void
 	filter: FilterValuesType
 	removeListTasks: (todoListId: string) => void
 }
 
 export const Todolist = (props: PropsType) => {
-	const {title, tasks, filter, removeTask, changeFilter, addTask, changeTaskStatus, todoListId, removeListTasks} = props
+	const {title, tasks, filter, removeTask, changeFilter, addTask, changeTaskStatus, changeTaskTitle, todoListId, removeListTasks} = props
 
 	const changeFilterTasksHandler = (filter: FilterValuesType, todoListId: string) => {
 		changeFilter(filter, todoListId)
@@ -54,10 +55,14 @@ export const Todolist = (props: PropsType) => {
 								changeTaskStatus(todoListId, task.id, newStatusValue)
 							}
 
+							const changeTaskTitleHandler = (newTitle: string) => {
+								changeTaskTitle(todoListId, task.id, newTitle)
+							}
+
 							return <li key={task.id} className={task.isDone ? 'is-done' : ''}>
 								<input type="checkbox" checked={task.isDone} onChange={changeTaskStatusHandler}/>
 								{/*<span>{task.title}</span>*/}
-								<EditableSpan title={task.title} />
+								<EditableSpan title={task.title} changeTaskTitle={changeTaskTitleHandler} />
 								<Button onClick={removeTaskHandler} title={'x'}/>
 							</li>
 						})}

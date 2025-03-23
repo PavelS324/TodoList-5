@@ -26,6 +26,7 @@ const onChangeRemoveTask = action('removeTask')
 const onChangeChangeFilter = action('changeFilter')
 const onChangeAddTask = action('addTask')
 const onChangeChangeTaskStatus = action('changeTaskStatus')
+const onChangeChangeTaskTitle = action('changeTaskTitle')
 const onChangeRemoveListTasks = action('removeListTasks')
 
 export const  EmptyList = () => {
@@ -41,6 +42,7 @@ export const  EmptyList = () => {
         changeFilter={onChangeChangeFilter}
         addTask={onChangeAddTask}
         changeTaskStatus={onChangeChangeTaskStatus}
+        changeTaskTitle={onChangeChangeTaskTitle}
         filter={'all'}
         removeListTasks={onChangeRemoveListTasks}
     />
@@ -65,6 +67,7 @@ export const  TList = () => {
         changeFilter={onChangeChangeFilter}
         addTask={onChangeAddTask}
         changeTaskStatus={onChangeChangeTaskStatus}
+        changeTaskTitle={onChangeChangeTaskTitle}
         filter={'all'}
         removeListTasks={onChangeRemoveListTasks}
     />
