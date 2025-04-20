@@ -108,7 +108,7 @@ function App() {
 	}
 
 	const addList = (title: string) => {
-		debugger
+
 		let todoListIdX = v1()
 
 		const newList: TodoListType = {
