@@ -1,5 +1,8 @@
-import {Button} from "./Button";
+// import {Button} from "./Button";
 import {ChangeEvent, KeyboardEvent, useState} from "react";
+import Button from "@mui/material/Button";
+import AddCircleOutline from '@mui/icons-material/AddCircleOutline';
+import {IconButton} from "@mui/material";
 
 type TypeCreateItemForm = {
     addItem: (title: string) => void
@@ -38,7 +41,11 @@ export const CreateItemForm = (props: TypeCreateItemForm) => {
                 onChange={changeItemTitleHandler}
                 onKeyUp={addItemOnKeyUpHandler}
             />
-            <Button title={'+'} onClick={() => {addItemHandler()}}/>
+            {/*<Button title={'+'} onClick={() => {addItemHandler()}}/>*/}
+            {/*<Button variant="contained" onClick={() => {addItemHandler()}}>+</Button>*/}
+            <IconButton color="primary" onClick={() => {addItemHandler()}}>
+                <AddCircleOutline />
+            </IconButton>
             {error && <div className={'error-message'}>{error}</div> }
         </div>
     )
