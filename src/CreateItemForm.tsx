@@ -1,8 +1,8 @@
 // import {Button} from "./Button";
 import {ChangeEvent, KeyboardEvent, useState} from "react";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import AddCircleOutline from '@mui/icons-material/AddCircleOutline';
-import {IconButton} from "@mui/material";
+import {IconButton, TextField} from "@mui/material";
 
 type TypeCreateItemForm = {
     addItem: (title: string) => void
@@ -35,9 +35,19 @@ export const CreateItemForm = (props: TypeCreateItemForm) => {
 
     return (
         <div>
-            <input
-                className={error ? 'error' : ''}
+            {/*<input*/}
+            {/*    className={error ? 'error' : ''}*/}
+            {/*    value={itemTitle}*/}
+            {/*    onChange={changeItemTitleHandler}*/}
+            {/*    onKeyUp={addItemOnKeyUpHandler}*/}
+            {/*/>*/}
+            <TextField
+                error={error ? true : false}
                 value={itemTitle}
+                variant="outlined"
+                label="Enter a title"
+                size="small"
+                helperText={error}
                 onChange={changeItemTitleHandler}
                 onKeyUp={addItemOnKeyUpHandler}
             />
@@ -46,7 +56,7 @@ export const CreateItemForm = (props: TypeCreateItemForm) => {
             <IconButton color="primary" onClick={() => {addItemHandler()}}>
                 <AddCircleOutline />
             </IconButton>
-            {error && <div className={'error-message'}>{error}</div> }
+            {/*{error && <div className={'error-message'}>{error}</div> }*/}
         </div>
     )
 }
