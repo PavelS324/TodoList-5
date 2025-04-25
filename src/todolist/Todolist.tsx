@@ -1,7 +1,7 @@
 import {FilterValuesType, TaskType} from "../App";
 import {ChangeEvent, KeyboardEvent, useState} from "react";
 // import {Button} from "../Button";
-import {Button} from "@mui/material";
+import {Button, Checkbox, List, ListItem} from "@mui/material";
 import {CreateItemForm} from "../CreateItemForm";
 import {EditableSpan} from "../editableSpan/EditableSpan";
 import {IconButton} from "@mui/material";
@@ -43,7 +43,6 @@ export const Todolist = (props: PropsType) => {
 	return (
 		<div>
 			<div className={'todolist-title-container'}>
-				{/*<h3>{title}</h3>*/}
 				<EditableSpan title={title} changeTaskTitle={changeTitleHandler} />
 				{/*<Button onClick={removeListTasksHandler} title={'x'}/>*/}
 				<IconButton onClick={removeListTasksHandler}>
@@ -56,7 +55,8 @@ export const Todolist = (props: PropsType) => {
 			{
 				tasks.length === 0
 					? <p>Тасок нет</p>
-					: <ul>
+					// : <ul>
+					: <List dense disablePadding>
 						{tasks.map((task) => {
 							const removeTaskHandler = () => {
 								removeTask(todoListId, task.id)
@@ -71,17 +71,21 @@ export const Todolist = (props: PropsType) => {
 								changeTaskTitle(todoListId, task.id, newTitle)
 							}
 
-							return <li key={task.id} className={task.isDone ? 'is-done' : ''}>
-								<input type="checkbox" checked={task.isDone} onChange={changeTaskStatusHandler}/>
+							// return <li key={task.id} className={task.isDone ? 'is-done' : ''}>
+							return <ListItem key={task.id} className={task.isDone ? 'is-done' : ''}>
+								{/*<input type="checkbox" checked={task.isDone} onChange={changeTaskStatusHandler}/>*/}
+								<Checkbox checked={task.isDone} size="small" onChange={changeTaskStatusHandler}/>
 								<EditableSpan title={task.title} changeTaskTitle={changeTaskTitleHandler} />
 								{/*<Button onClick={removeTaskHandler} title={'x'}/>*/}
 								{/*<IconButton aria-label="delete" onClick={removeTaskHandler}>*/}
 								<IconButton onClick={removeTaskHandler}>
 									<DeleteIcon />
 								</IconButton>
-							</li>
+							{/*</li>*/}
+							</ListItem>
 						})}
-					</ul>
+					{/*</ul>*/}
+					</List>
 			}
 			<div>
 				{/*<Button className={filter === 'all' ? 'active-filter' : '' } title={'All'} onClick={()=> changeFilterTasksHandler('all', todoListId)}/>*/}
