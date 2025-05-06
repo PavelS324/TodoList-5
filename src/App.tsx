@@ -3,7 +3,7 @@ import {Todolist} from "./todolist/Todolist";
 import {FC, useState} from "react";
 import {v1} from "uuid";
 import {CreateItemForm} from "./CreateItemForm";
-import {AppBar, Container, Grid, IconButton, Toolbar, Typography} from "@mui/material";
+import {AppBar, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu"
 
 export type TaskType = {
@@ -163,20 +163,22 @@ function App() {
                         }
 
                         return (<Grid key={tl.id}>
-                            <Todolist
-                                // key={tl.id}
-                                todoListId={tl.id}
-                                title={tl.title}
-                                tasks={tasksForTodolist}
-                                removeTask={removeTask}
-                                changeFilter={changeFilter}
-                                addTask={addTask}
-                                changeTaskStatus={changeTaskStatus}
-                                changeTaskTitle={changeTaskTitle}
-                                changeTitle={changeTitle}
-                                filter={tl.filter}
-                                removeListTasks={removeListTasks}
-                            />
+                            <Paper elevation={3}>
+                                <Todolist
+                                    // key={tl.id}
+                                    todoListId={tl.id}
+                                    title={tl.title}
+                                    tasks={tasksForTodolist}
+                                    removeTask={removeTask}
+                                    changeFilter={changeFilter}
+                                    addTask={addTask}
+                                    changeTaskStatus={changeTaskStatus}
+                                    changeTaskTitle={changeTaskTitle}
+                                    changeTitle={changeTitle}
+                                    filter={tl.filter}
+                                    removeListTasks={removeListTasks}
+                                />
+                            </Paper>
                         </Grid>)
 
                     })}
