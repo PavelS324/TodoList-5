@@ -3,6 +3,8 @@ import {Todolist} from "./todolist/Todolist";
 import {FC, useState} from "react";
 import {v1} from "uuid";
 import {CreateItemForm} from "./CreateItemForm";
+import {AppBar, IconButton, Toolbar, Typography} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu"
 
 export type TaskType = {
 	id: string
@@ -125,6 +127,22 @@ function App() {
 
 	return (
 		<div className="App">
+			<AppBar position="static">
+				<Toolbar>
+					<IconButton
+						size="small"
+						edge="start"
+						color="inherit"
+						aria-label="menu"
+						sx={{mr: 2}}
+					>
+						<MenuIcon />
+					</IconButton>
+					{/*<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>*/}
+					{/*	News*/}
+					{/*</Typography>*/}
+				</Toolbar>
+			</AppBar>
 			<CreateItemForm addItem={addList} />
 			{todoLists.map(tl => {
 				let tasksForTodolist = tasks[tl.id]
