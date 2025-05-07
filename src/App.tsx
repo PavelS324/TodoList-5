@@ -129,7 +129,7 @@ function App() {
 
     return (
         <div className="App">
-            <AppBar position="static">
+            <AppBar position="static" sx={{marginBottom: "15px"}}>
                 <Toolbar>
                     <Container>
                         <IconButton
@@ -148,7 +148,7 @@ function App() {
                 </Toolbar>
             </AppBar>
             <Container maxWidth="lg">
-                <Grid container>
+                <Grid container sx={{margin: "15px 0 20px"}}>
                     <CreateItemForm addItem={addList}/>
                 </Grid>
                 <Grid container spacing={4}>
@@ -163,7 +163,7 @@ function App() {
                         }
 
                         return (<Grid key={tl.id}>
-                            <Paper elevation={3}>
+                            <Paper elevation={3} sx={{padding: "15px"}}>
                                 <Todolist
                                     // key={tl.id}
                                     todoListId={tl.id}

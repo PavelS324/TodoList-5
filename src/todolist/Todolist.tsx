@@ -72,7 +72,7 @@ export const Todolist = (props: PropsType) => {
 							}
 
 							// return <li key={task.id} className={task.isDone ? 'is-done' : ''}>
-							return <ListItem key={task.id} className={task.isDone ? 'is-done' : ''}>
+							return <ListItem key={task.id} className={task.isDone ? 'is-done' : ''} sx={{p: "0"}}>
 								{/*<input type="checkbox" checked={task.isDone} onChange={changeTaskStatusHandler}/>*/}
 								<Checkbox checked={task.isDone} size="small" onChange={changeTaskStatusHandler}/>
 								<EditableSpan title={task.title} changeTaskTitle={changeTaskTitleHandler} />
