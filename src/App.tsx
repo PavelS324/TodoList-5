@@ -3,8 +3,10 @@ import {Todolist} from "./todolist/Todolist";
 import {FC, useState} from "react";
 import {v1} from "uuid";
 import {CreateItemForm} from "./CreateItemForm";
-import {AppBar, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
+import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu"
+import {containerSx} from "./todolist/Todolist.styles";
+import {NavButton} from "./navButton/NavButton.styles";
 
 export type TaskType = {
     id: string
@@ -131,7 +133,7 @@ function App() {
         <div className="App">
             <AppBar position="static" sx={{marginBottom: "15px"}}>
                 <Toolbar>
-                    <Container>
+                    <Container maxWidth="lg" sx={containerSx}>
                         <IconButton
                             size="small"
                             edge="start"
@@ -144,6 +146,14 @@ function App() {
                         {/*<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>*/}
                         {/*	News*/}
                         {/*</Typography>*/}
+                        <div>
+                            {/*<Button color="inherit">Sign in</Button>*/}
+                            {/*<Button color="inherit">Sign up</Button>*/}
+                            {/*<Button color="inherit">Faq</Button>*/}
+                            <NavButton>Sign in</NavButton>
+                            <NavButton>Sign up</NavButton>
+                            <NavButton>Faq</NavButton>
+                        </div>
                     </Container>
                 </Toolbar>
             </AppBar>

@@ -4,9 +4,9 @@
     flex-direction: column;
 }
 
-.App > div {
-  margin-right: 50px;
-}
+/*.App > div {*/
+/*  margin-right: 50px;*/
+/*}*/
 
 /*.error {*/
 /*  border: red 1px solid;*/
@@ -20,6 +20,6 @@
 /*  background-color: lightgreen;*/
 /*}*/
 
-.is-done {
-  opacity: 0.5;
-}
+/*.is-done {*/
+/*  opacity: 0.5;*/
+/*}*/

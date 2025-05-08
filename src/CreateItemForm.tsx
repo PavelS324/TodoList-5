@@ -3,6 +3,7 @@ import {ChangeEvent, KeyboardEvent, useState} from "react";
 // import Button from "@mui/material/Button";
 import AddCircleOutline from '@mui/icons-material/AddCircleOutline';
 import {IconButton, TextField} from "@mui/material";
+import AddBoxIcon from "@mui/material/IconButton"
 
 type TypeCreateItemForm = {
     addItem: (title: string) => void
@@ -55,6 +56,7 @@ export const CreateItemForm = (props: TypeCreateItemForm) => {
             {/*<Button variant="contained" onClick={() => {addItemHandler()}}>+</Button>*/}
             <IconButton color="primary" onClick={() => {addItemHandler()}}>
                 <AddCircleOutline />
+                {/*<AddBoxIcon />*/}
             </IconButton>
             {/*{error && <div className={'error-message'}>{error}</div> }*/}
         </div>
