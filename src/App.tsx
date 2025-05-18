@@ -3,7 +3,20 @@ import {Todolist} from "./todolist/Todolist";
 import {FC, useState} from "react";
 import {v1} from "uuid";
 import {CreateItemForm} from "./CreateItemForm";
-import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
+import {
+    AppBar,
+    Button,
+    Container, CssBaseline,
+    Grid,
+    IconButton,
+    Paper, Switch,
+    Toolbar,
+    Typography
+} from "@mui/material";
+import {
+    createTheme,
+    ThemeProvider
+} from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu"
 import {containerSx} from "./todolist/Todolist.styles";
 import {NavButton} from "./navButton/NavButton.styles";
@@ -27,6 +40,7 @@ type TodoListType = {
     filter: FilterValuesType
 }
 
+type ThemeMode = 'dark' | 'light'
 function App() {
 
     let todoListId1 = v1()
@@ -129,8 +143,24 @@ function App() {
         setTasks(newTasks)
     }
 
+    const [themeMode, setThemeMode] = useState<ThemeMode>('light')
+
+    const theme = createTheme({
+        palette: {
+            mode: themeMode,
+            primary: {
+                main: '#087EA4',
+            }
+        }
+    })
+
+    const  changeMode = () => {
+        setThemeMode(themeMode === 'light' ? 'dark' : 'light')
+    }
+
     return (
-        <div className="App">
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
             <AppBar position="static" sx={{marginBottom: "15px"}}>
                 <Toolbar>
                     <Container maxWidth="lg" sx={containerSx}>
@@ -152,7 +182,8 @@ function App() {
                             {/*<Button color="inherit">Faq</Button>*/}
                             <NavButton>Sign in</NavButton>
                             <NavButton>Sign up</NavButton>
-                            <NavButton>Faq</NavButton>
+                            <NavButton background={theme.palette.primary.dark}>Faq</NavButton>
+                            <Switch color={'default'} onChange={changeMode} />
                         </div>
                     </Container>
                 </Toolbar>
@@ -194,7 +225,7 @@ function App() {
                     })}
                 </Grid>
             </Container>
-        </div>
+        </ThemeProvider>
     );
 }
 
